@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="290016735368-1ogpugddnnucgvv9234d2espb0r0d122.apps.googleusercontent.com">
+    <title>Demo Login</title>
+</head>
+<body>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <h1>Google Sing-in</h1>
+
+    <div id="buttonDiv"></div>
+
+    <div class="g_id_signout">Sign Out</div>
+
+    <script>
+        function handleCredentialResponse(response) {
+            // Token de Acceso
+           console.log("Encoded JWT ID token: " + response.credential);
+        }
+
+        window.onload = function () {
+          google.accounts.id.initialize({
+            client_id: "290016735368-1ogpugddnnucgvv9234d2espb0r0d122.apps.googleusercontent.com",
+            callback: handleCredentialResponse
+          });
+
+          google.accounts.id.renderButton(
+            document.getElementById("buttonDiv"),
+            { theme: "outline", size: "large" }  // customization attributes
+          );
+
+
+        //   Muestra Inicio de sesion rapido
+        //   google.accounts.id.prompt(); // also display the One Tap dialog
+        }
+
+        
+
+    </script>
+    
+
+
+
+
+</body>
+</html>
