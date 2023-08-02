@@ -2,9 +2,10 @@
 //  Path: /api/login
 // 
 const { Router } = require('express');
-const { login , googleSingIn } = require('../controllers/auth.controller');
+const { login , googleSingIn, renewToken } = require('../controllers/auth.controller');
 const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
+const { validarJWT } = require('../middlewares/validar-JWT');
 
 const router = Router();
 
@@ -24,6 +25,13 @@ const router = Router();
     ],
     googleSingIn
         );
+
+        router.get('/renew', 
+        [
+            validarJWT,
+            renewToken
+        ],
+            );
 
 
 module.exports = router;
